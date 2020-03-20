@@ -11,5 +11,8 @@
     "url": "\u0016https://github.com/LorianneSoulignac/web_Backend1"
   },
   "author": "Lorianne",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pug": "^2.0.4"
+  }
 }
