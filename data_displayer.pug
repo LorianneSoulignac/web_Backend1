@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title Mongo DB Tp
+
+    body
+        div
+            h1 Voici les villes 
+
+            table
+                thead
+                    tr
+                        th
+                            | Identifiant
+                        th
+                            | Ville
+                tbody
+                    each n in towns
+                       tr  
+                            td
+                                | #{n.id}
+                                
+                            td
+                                | #{n.name}
+
+            h1 Ajoutez un ville
+            form(method='POST' action='/city')
+                input(type="text", placeholder='city' name ='name')
+                button(type='submit') Ajouter
+
+            h1 Modifier une ville en entrant son identifiant
+            form(method='POST' action='/city')
+                input(type="text", placeholder='identifiant' name ='id')
+                button(type='submit') Modifier
+
+            
