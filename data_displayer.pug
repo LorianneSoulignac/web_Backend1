@@ -23,14 +23,38 @@ html
                             td
                                 | #{n.name}
 
-            h1 Ajoutez un ville
+            h1 Ajoutez une ville
             form(method='POST' action='/city')
                 input(type="text", placeholder='city' name ='name')
                 button(type='submit') Ajouter
 
-            h1 Modifier une ville en entrant son identifiant
-            form(method='POST' action='/city')
-                input(type="text", placeholder='identifiant' name ='id')
-                button(type='submit') Modifier
+            h1 Modifier  une ville
+            form
+                input(id="inputId" type="text", placeholder='identifiant' name ='id')
+                input(id="inputName" type="text", placeholder='New name' name ='name')
+            button(id="modifButton" type='text' onclick="sendPutMethod()") Modifier
+
+
+    script.
+        function sendPutMethod(){
+            const cityId = document.getElementById('inputId').value;
+            const newName = document.getElementById('inputName').value;
+            console.log()
+            if(cityId !== ""){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                     if (this.readyState == 4 && this.status == 200) {
+                    //-     document.getElementById('A1').innerHTML = this.status;
+                    //-     document.getElementById('A2').innerHTML = this.statusText;
+                    //-     document.getElementById('A3').innerHTML = this.responseText;
+                        console.log(this.responseText);
+                    }
+                };
+                xhttp.open("PUT", "/city/"+ cityId, true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                xhttp.send(JSON.stringify({name: newName}));
+            }
+
+        }
 
             
